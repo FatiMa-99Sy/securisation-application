@@ -29,9 +29,11 @@
             <a href="nos.html" class="nav-item nav-link">Nos Formation</a>
         </div>
 
-        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Connectez-Vous<i class="fa fa-arrow-right ms-3"></i></a>
+        <a href="connexion.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Connectez-Vous<i class="fa fa-arrow-right ms-3"></i></a>
     </div>
 </nav>
+
+
 
 <!-- section 1 -->
 <header class="lentete">
@@ -48,7 +50,7 @@
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 ">Cliquez Ici</a>
                                 <a href="connexion.php" class="btn btn-light py-md-3 px-md-5 ">Connectez-Vous</a>
-                                <a class="btn btn-primary py-md-3 px-md-5 " href="formulaire.html">Inscrivez-Vous</a>
+                                <a class="btn btn-primary py-md-3 px-md-5 " href="formulaire.php">Inscrivez-Vous</a>
 
                             </div>
                             <div class="row justify-content-end">

@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
+
+if(isset($_GET['id']) AND $_GET['id'] > 0) {
+   $getid = intval($_GET['id']);
+   $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+   $requser->execute(array($getid));
+   $userinfo = $requser->fetch();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +25,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  <!--navebar  -->
-    
-  <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+
+
+
+<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
     <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
         <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>Kaay CoDer</h2>
     </a>
@@ -29,9 +42,21 @@
             <a href="nos.html" class="nav-item nav-link">Nos Formation</a>
         </div>
 
-        <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Connectez-Vous<i class="fa fa-arrow-right ms-3"></i></a>
+       
+        <?php
+         if(isset($_SESSION['id']) AND $userinfo['id'] == $_SESSION['id']) {
+         ?>
+         <br />
+         <a href="deconnexion.php" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Se déconnecter <i class="fa fa-arrow-left ms-3"></i></a>
+         
+         
+         <?php
+         }
+         ?>
     </div>
 </nav>
+
+
 
 <!-- section 1 -->
 <header class="lentete">
@@ -47,8 +72,7 @@
                                 <h1 class="display-3 text-white ">La Meilleurs Plateforme d'Apprentissages en Ligne</h1>
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elitr.</p>
                                 <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 ">Cliquez Ici</a>
-                                <a href="connexion.php" class="btn btn-light py-md-3 px-md-5 ">Connectez-Vous</a>
-                                <a class="btn btn-primary py-md-3 px-md-5 " href="formulaire.html">Inscrivez-Vous</a>
+                               
 
                             </div>
                             <div class="row justify-content-end">
@@ -502,5 +526,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+    
 </body>
 </html>
+
+
+<?php
+}
+?>
